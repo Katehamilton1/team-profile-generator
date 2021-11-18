@@ -8,7 +8,7 @@ let teamArray = [];
 
 
   function  managerQuestions() {
-        inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: 'input',
                 name: 'name',
@@ -38,32 +38,8 @@ let teamArray = [];
             });
     };
 
-
-
-    // function addTeamMembers() {
-    //     inquirer.prompt([
-
-    //         {
-    //             type: 'list',
-    //             name: 'add memberData',
-    //             message: 'Would you like to add more team members?',
-    //             choices: ["Yes, add an engineer", "Yes, add an intern", "No, my team is complete"],
-
-    //         }
-    //     ])
-    //         .then(function (data) {
-    //             const name = name.data
-    //             const id = id.data
-    //             const email = email.data;
-    //             const office = office.data;
-    //             const teamMember = new Manager(name, id, email, officeNumber)
-    //             teamArray.push(teamMember);
-
-    //         })
-    // }
-
     function addEngineer() {
-        inquirer.prompt([
+       return inquirer.prompt([
             {
                 type: 'input',
                 message: "What is the engineer's name?",
@@ -90,7 +66,7 @@ let teamArray = [];
         };
 
         function addIntern() {
-            inquirer.prompt([
+            return inquirer.prompt([
                 {
                     type: 'input',
                     message: "What is this intern's name?",
@@ -113,7 +89,7 @@ let teamArray = [];
             }
 
             managerQuestions()
-            addIntern()
-            addEngineer()
+           .then(addIntern)
+           .then(addEngineer)
 
 
