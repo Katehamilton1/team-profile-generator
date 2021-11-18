@@ -6,7 +6,7 @@ const fs = require('fs');
 
 let teamArray = [];
 
-function startQuestions() {
+
   function  managerQuestions() {
         inquirer.prompt([
             {
@@ -114,6 +114,6 @@ function startQuestions() {
 
             managerQuestions()
             addIntern()
-};
+            addEngineer()
 
-startQuestions()
+
