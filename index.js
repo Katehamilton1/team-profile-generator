@@ -40,27 +40,27 @@ function startQuestions() {
 
 
 
-    function addTeamMembers() {
-        inquirer.prompt([
+    // function addTeamMembers() {
+    //     inquirer.prompt([
 
-            {
-                type: 'list',
-                name: 'add memberData',
-                message: 'Would you like to add more team members?',
-                choices: ["Yes, add an engineer", "Yes, add an intern", "No, my team is complete"],
+    //         {
+    //             type: 'list',
+    //             name: 'add memberData',
+    //             message: 'Would you like to add more team members?',
+    //             choices: ["Yes, add an engineer", "Yes, add an intern", "No, my team is complete"],
 
-            }
-        ])
-            .then(function (data) {
-                const name = name.data
-                const id = id.data
-                const email = email.data;
-                const office = office.data;
-                const teamMember = new Manager(name, id, email, officeNumber)
-                teamArray.push(teamMember);
+    //         }
+    //     ])
+    //         .then(function (data) {
+    //             const name = name.data
+    //             const id = id.data
+    //             const email = email.data;
+    //             const office = office.data;
+    //             const teamMember = new Manager(name, id, email, officeNumber)
+    //             teamArray.push(teamMember);
 
-            })
-    }
+    //         })
+    // }
 
     function addEngineer() {
         inquirer.prompt([
@@ -113,6 +113,7 @@ function startQuestions() {
             }
 
  managerQuestions()
+
 };
 
- startQuestions()
+startQuestions()
