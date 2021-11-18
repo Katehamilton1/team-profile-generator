@@ -48,7 +48,42 @@ const generateInternCard = function (intern) {
     </div>`
 };
 
+// push array to page
+generateHTML = (data) => {
+    //array for cards
+    pageArray = [];
 
+    for (let i = 0; i < data.length; i++) {
+        const teamMember = data[i];
+        const role = teamMember.getRole();
+
+        //mangager function 
+        if (role === "Manager") {
+            const managerCard = generateManagerCard(teamMember);
+            pageArray.push(managerCard);
+        }
+
+        if (role === "Engineer") {
+            const engineerCard = generateEngineerCard(teamMember);
+            pageArray.push(engineerCard);
+        }
+        else {
+            const internCard = generateInternCard(teamMember);
+
+            pageArray.push(internCard);
+        };
+
+    };
+
+//join the cards 
+const employeeCards = pageArray.join('')
+
+
+//return to generate html
+
+const generateTeam = generateTeamPage(employeeCards) 
+    return generateTeamPage;
+};
 
 
 

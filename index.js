@@ -112,8 +112,8 @@ function startQuestions() {
                 })
             }
 
- managerQuestions()
-
+            managerQuestions()
+            addIntern()
 };
 
 startQuestions()
