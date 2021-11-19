@@ -15,7 +15,6 @@ const generateManagerCard = function (manager) {
 };
 
 //generate Engineer card
-
 const generateEngineerCard = function (engineer) {
     return `
     <div class="card" style="width: 18rem;">
