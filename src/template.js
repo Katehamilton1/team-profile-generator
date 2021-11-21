@@ -87,7 +87,7 @@ const generateTeam = generateTeamPage(employeeCards)
 
 
 // generate html page 
-const generateTeamPage = function () {
+const generateTeamPage = function (employeeCards) {
     return `
   <!DOCTYPE html>
   <html lang="en">
@@ -105,9 +105,7 @@ const generateTeamPage = function () {
       </header>
       <main>
          
-
-
-
+      ${employeeCards}
       </main>
       
   </body>
