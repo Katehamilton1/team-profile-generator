@@ -1,4 +1,4 @@
-const generateTemplate = require('./src/generateHTML.js');
+const generateTemplate = require('./src/template.js');
 
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
@@ -114,18 +114,17 @@ function addIntern() {
 };
         
   const writeFile = data => {
-      fs.writeFile('./template.js', data, err => {
-          if (err) {
-              console.log(error);
-              return;
-          } else {
-              console.log('profiles have been created')
-          };
-          });
-        };
+    const newFile = teamArray
 
+    fs.writeFile('/template.js', newFile, data, err => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      //file written successfully
+    })
 
-
+  };
     
 // const generateTeamPage = function (team) {
 //     fs.writeFileSync(/src/template.js, render(teamArray), 'utf-8')
