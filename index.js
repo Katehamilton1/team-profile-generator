@@ -1,4 +1,4 @@
-const generateTemplate = require('./src/template.js');
+const generateTemplate = require('./src/generateHTML.js');
 
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
@@ -84,12 +84,12 @@ function addIntern() {
             message: "What is this intern's school?",
             name: "school"
         },
-        {
-            type: 'input',
-            mesage: 'Would you like to add more team members?',
-            name: 'confirmAddEmployee',
-            default: false
-        }
+        // {
+        //     type: 'input',
+        //     mesage: 'Would you like to add more team members?',
+        //     name: 'confirmAddEmployee',
+        //     default: false
+        // }
     ])
         .then(employeeData => {
             //data for employees
@@ -114,7 +114,7 @@ function addIntern() {
 };
         
   const writeFile = data => {
-      fs.writeFile('./template,js', data, err => {
+      fs.writeFile('./template.js', data, err => {
           if (err) {
               console.log(error);
               return;
@@ -134,6 +134,7 @@ function addIntern() {
 managerQuestions()
     .then(addIntern)
     .then(addEngineer)
+    
 
 
 
