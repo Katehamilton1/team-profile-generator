@@ -53,9 +53,10 @@ generateHTML = (data) => {
     pageArray = [];
   
 
-    for (let i = 0; i < pagearray.length; i++) {
+    for (let i = 0; i < pageArray.length; i++) {
+      const teamMember = data[i];
       const role = teamMember.getRole();
-        const teamMember = data[i];
+       
       ;
 
         //mangager function 

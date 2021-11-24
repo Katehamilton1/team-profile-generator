@@ -1,5 +1,3 @@
-// link to page creation
-const generateTemplate = require('./src/template.js');
 
 // team profiles
 const Manager = require('./lib/Manager');
@@ -9,6 +7,12 @@ const Intern = require('./lib/Intern');
 // node modules 
 const fs = require('fs');
 const inquirer = require('inquirer');
+
+const path = require('path');
+
+const output_dir = path.resolve(__dirname, 'dist')
+const output_path = path.join(output_dir, 'index.html')
+const render = require('./src/template.js')
 
 // team array
 let teamArray = [];
@@ -41,9 +45,37 @@ function managerQuestions() {
 
             const manager = new Manager(dataManager.name, dataManager.id, dataManager.email, dataManager.officeNumber);
             teamArray.push(manager);
+            teamPrompt ()
 
         });
 };
+
+function teamPrompt () {
+    inquirer.prompt([
+        {
+            type:'list',
+            message:"Which team member would you like to add?",
+            name: 'userChoice',
+            choices:[
+                'Engineer',
+                'Intern',
+                'done'
+            ]
+        }
+    ])
+    .then(userData =>{
+        switch(userData.userChoice) {
+            case 'Engineer':
+                addEngineer();
+                break;
+            case 'Intern':
+                addIntern();
+                break;
+            default:
+                renderPage();
+        }
+    })
+}
 
 function addEngineer() {
     return inquirer.prompt([
@@ -69,7 +101,9 @@ function addEngineer() {
             const github = data.github
             const teamMember = new Intern(name, email, github)
             teamArray.push(teamMember);
+            teamPrompt ()
         });
+        
 };
 
 function addIntern() {
@@ -89,12 +123,6 @@ function addIntern() {
             message: "What is this intern's school?",
             name: "school"
         },
-        // {
-        //     type: 'input',
-        //     mesage: 'Would you like to add more team members?',
-        //     name: 'confirmAddEmployee',
-        //     default: false
-        // }
     ])
         .then(employeeData => {
             //data for employees
@@ -115,36 +143,38 @@ function addIntern() {
                 return teamArray;
             }
         })
-
+        teamPrompt ()
 };
+
+// console.log(teamArray);   
+// // function to generate HTML page file using file system
+//   const writeFile = teamArray => {
+//     console.log('team array' , teamArray)
+//     const newFile = teamArray
+
+//     fs.writeFile('/template.js', newFile, err => {
+//       if (err) {
+//         console.error(err)
+//         return
+//       }else {
+//         console.log("Your team profile has been created")
+//     }
+//     })
+
+//   };
    
-// function to generate HTML page file using file system
-  const writeFile = data => {
-    const newFile = teamArray
+const renderPage = () => {
+    console.log(teamArray)
+fs.writeFileSync(output_path, render(JSON.stringify(teamArray)), "utf-8")
+console.log("written to file")
 
-    fs.writeFile('/template.js', newFile, 'utf-8', err => {
-      if (err) {
-        console.error(err)
-        return
-      }else {
-        console.log("Your team profile has been successfully created! Please check out the index.html")
-    }
-    })
+}
 
-  };
-    
+
 
 
 managerQuestions()
-    .then(addIntern)
-    .then(addEngineer)
-    .then(teamArray => {
-        return generateHTML(teamArray);
-    })
-    .then(pageHTML => {
-        return writeFile(pageHTML)
-    })
-    
+  
 
 
 
