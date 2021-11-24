@@ -51,10 +51,12 @@ const generateInternCard = function (intern) {
 generateHTML = (data) => {
     //array for cards
     pageArray = [];
+  
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < pagearray.length; i++) {
+      const role = teamMember.getRole();
         const teamMember = data[i];
-        const role = teamMember.getRole();
+      ;
 
         //mangager function 
         if (role === "Manager") {
@@ -71,11 +73,11 @@ generateHTML = (data) => {
 
             pageArray.push(internCard);
         };
-
-    };
+      }
+    
 
 //join the cards 
-const employeeCards = pageArray.join('')
+const employeeCards = pageArray.join("")
 
 
 //return to generate html

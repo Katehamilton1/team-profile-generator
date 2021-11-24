@@ -1,14 +1,19 @@
+// link to page creation
 const generateTemplate = require('./src/template.js');
 
-const inquirer = require('inquirer');
+// team profiles
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const fs = require('fs');
 
+// node modules 
+const fs = require('fs');
+const inquirer = require('inquirer');
+
+// team array
 let teamArray = [];
 
-
+// start of manager prompts 
 function managerQuestions() {
     return inquirer.prompt([
         {
@@ -112,27 +117,33 @@ function addIntern() {
         })
 
 };
-        
+   
+// function to generate HTML page file using file system
   const writeFile = data => {
     const newFile = teamArray
 
-    fs.writeFile('/template.js', newFile, data, err => {
+    fs.writeFile('/template.js', newFile, 'utf-8', err => {
       if (err) {
         console.error(err)
         return
-      }
-      //file written successfully
+      }else {
+        console.log("Your team profile has been successfully created! Please check out the index.html")
+    }
     })
 
   };
     
-// const generateTeamPage = function (team) {
-//     fs.writeFileSync(/src/template.js, render(teamArray), 'utf-8')
-// }
+
 
 managerQuestions()
     .then(addIntern)
     .then(addEngineer)
+    .then(teamArray => {
+        return generateHTML(teamArray);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML)
+    })
     
 
 
