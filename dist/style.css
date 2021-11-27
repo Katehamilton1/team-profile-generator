@@ -23,18 +23,23 @@ body {
 }
 
 
+
 .card-title {
     color:black;
 }
 
 .card-body {
-    background-color: var(--secondary);
+    background-color:lightgrey;
     color: var(--primary);
+    /* display: flex;
+    justify-content: space-between; */
 }
 
 .container {
+ 
     margin: 100px auto;
-    justify-content: space-between;
-    display: flex;
+    display: flex; */
+    /justify-content: space-between;
+  
  
 }

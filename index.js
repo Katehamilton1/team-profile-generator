@@ -37,7 +37,7 @@ function managerQuestions() {
         },
         {
             type: 'input',
-            name: 'number',
+            name: 'officeNumber',
             message: 'What is the team managers office number?',
         },
     ])
@@ -86,6 +86,11 @@ function addEngineer() {
         },
         {
             type: 'input',
+            name: 'id',
+            message: 'What is the Engineers id?',
+        },
+        {
+            type: 'input',
             message: "What is the engineer's email address?",
             name: "email"
         },
@@ -97,9 +102,10 @@ function addEngineer() {
     ])
         .then(function (data) {
             const name = data.name;
+            const id = data.id;
             const email = data.email;
-            const github = data.github
-            const teamMember = new Engineer(name, email, github)
+            const github = data.github;
+            const teamMember = new Engineer(name,id, email, github)
             teamArray.push(teamMember);
             teamPrompt ()
         });
@@ -113,6 +119,11 @@ function addIntern() {
             type: 'input',
             message: "What is this intern's name?",
             name: "name"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the Interns id?',
         },
         {
             type: 'input',
@@ -130,7 +141,7 @@ function addIntern() {
 
 
             //data for employees
-            let employee = new Intern(employeeData.name,employeeData.email, employeeData.school);
+            let employee = new Intern(employeeData.name,employeeData.id, employeeData.email, employeeData.school);
             teamArray.push(employee);
 
 
