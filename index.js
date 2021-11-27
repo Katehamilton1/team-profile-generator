@@ -99,12 +99,13 @@ function addEngineer() {
             const name = data.name;
             const email = data.email;
             const github = data.github
-            const teamMember = new Intern(name, email, github)
+            const teamMember = new Engineer(name, email, github)
             teamArray.push(teamMember);
             teamPrompt ()
         });
         
 };
+
 
 function addIntern() {
     return inquirer.prompt([
@@ -124,25 +125,15 @@ function addIntern() {
             name: "school"
         },
     ])
+    
         .then(employeeData => {
+
+
             //data for employees
-
-            let { name, id, email, role, github, school, confirmAddEmployee } = employeeData
-            let employee;
-
-            if (role === 'Engineer') {
-                employee = new Engineer(name, id, email, github);
-            } else if (role === 'Intern') {
-                employee = new Intern(name, id, email, school)
-            }
+            let employee = new Intern(employeeData.name,employeeData.email, employeeData.school);
             teamArray.push(employee);
 
-            if (confirmAddEmployee) {
-                return addEmployee(teamArray);
-            } else {
-                return teamArray;
-                
-            };
+
             teamPrompt ()
         })
         
