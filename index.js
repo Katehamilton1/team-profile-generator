@@ -141,9 +141,11 @@ function addIntern() {
                 return addEmployee(teamArray);
             } else {
                 return teamArray;
-            }
+                
+            };
+            teamPrompt ()
         })
-        teamPrompt ()
+        
 };
    
 const renderPage = () => {

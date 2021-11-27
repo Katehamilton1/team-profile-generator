@@ -2,7 +2,7 @@
 const generateManagerCard = function (manager) {
     return `
 <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+
   <div class="card-body">
     <h5 class="card-title">${manager.name}</h5>
   </div>
@@ -18,7 +18,7 @@ const generateManagerCard = function (manager) {
 const generateEngineerCard = function (engineer) {
     return `
     <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
+    
       <div class="card-body">
         <h5 class="card-title">${engineer.name}</h5>
       </div>
@@ -35,7 +35,7 @@ const generateEngineerCard = function (engineer) {
 const generateInternCard = function (intern) {
     return `
     <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
+    
       <div class="card-body">
         <h5 class="card-title">${intern.name}</h5>
       </div>
@@ -54,7 +54,7 @@ generateHTML = (data) => {
     console.log(data)
   
 
-    for (let i = 0; i < pageArray.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       const teamMember = data[i];
       const role = teamMember.getRole();
        
@@ -104,12 +104,19 @@ const generateTeamPage = function (employeeCards) {
   </head>
   <body>
       <header>
-          
+      <nav class="navbar" id="navbar">
+      <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">Team Profile</span>
+  </nav>
 
       </header>
       <main>
          
-      ${employeeCards}
+      <div class="container">
+      <div class="row justify-content-center" id="team-cards">
+          <!--Team Cards-->
+          ${employeeCards}
+      </div>
+  </div>
       </main>
       
   </body>
