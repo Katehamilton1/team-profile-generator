@@ -145,28 +145,14 @@ function addIntern() {
         })
         teamPrompt ()
 };
-
-// console.log(teamArray);   
-// // function to generate HTML page file using file system
-//   const writeFile = teamArray => {
-//     console.log('team array' , teamArray)
-//     const newFile = teamArray
-
-//     fs.writeFile('/template.js', newFile, err => {
-//       if (err) {
-//         console.error(err)
-//         return
-//       }else {
-//         console.log("Your team profile has been created")
-//     }
-//     })
-
-//   };
    
 const renderPage = () => {
-    console.log(teamArray)
-fs.writeFileSync(output_path, render(JSON.stringify(teamArray)), "utf-8")
-console.log("written to file")
+ if (!fs.existsSync(output_dir)){
+     fs.mkdirSync(output_dir);
+ }
+  
+fs.writeFileSync(output_path,render(teamArray), "utf-8")
+console.log("write to file")
 
 }
 
