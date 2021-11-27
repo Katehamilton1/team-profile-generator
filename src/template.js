@@ -66,7 +66,7 @@ generateHTML = (data) => {
             pageArray.push(managerCard);
         }
 
-        if (role === "Engineer") {
+        else if (role === "Engineer") {
             const engineerCard = generateEngineerCard(teamMember);
             pageArray.push(engineerCard);
         }
