@@ -22,7 +22,12 @@ body {
     font-size: 50px;
 }
 
-
+.card {
+    display: flex; 
+    justify-content: space-between;
+    margin: 20px;
+    margin-bottom: 20px;
+}
 
 .card-title {
     color:black;
@@ -31,15 +36,13 @@ body {
 .card-body {
     background-color:lightgrey;
     color: var(--primary);
-    /* display: flex;
-    justify-content: space-between; */
 }
 
 .container {
  
     margin: 100px auto;
-    display: flex; */
-    /justify-content: space-between;
+    display: flex; 
+    justify-content: space-between;
   
  
 }
