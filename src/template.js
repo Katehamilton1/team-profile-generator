@@ -40,7 +40,7 @@ const generateInternCard = function (intern) {
     
       <div class="card-body">
         <h5 class="card-title">${intern.name}</h5>
-        Intern
+        
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">ID Number:${intern.id}</li>
